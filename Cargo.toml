@@ -1,0 +1,15 @@
+[package]
+name       = "url_repair"
+version    = "0.1.0"
+edition    = "2018"
+
+authors    = ["Zack Weinberg <zackw@panix.com>"]
+readme     = "README.md"
+license    = "Apache-2.0"
+repository = "https://github.com/zackw/rust-url-repair"
+
+[dependencies]
+url   = "^1.7.0"
+
+[badges]
+maintenance = { status = "experimental" }

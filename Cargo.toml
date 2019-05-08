@@ -11,5 +11,8 @@ repository = "https://github.com/zackw/rust-url-repair"
 [dependencies]
 url   = "^1.7.0"
 
+[dev-dependencies]
+galvanic-test = "0.2"
+
 [badges]
 maintenance = { status = "experimental" }

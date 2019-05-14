@@ -3,10 +3,13 @@ name       = "url_repair"
 version    = "0.1.0"
 edition    = "2018"
 
-authors    = ["Zack Weinberg <zackw@panix.com>"]
-readme     = "README.md"
-license    = "Apache-2.0"
-repository = "https://github.com/zackw/rust-url-repair"
+authors     = ["Zack Weinberg <zackw@panix.com>"]
+description = "Repair and canonicalize absolute URLs"
+license     = "Apache-2.0"
+repository  = "https://github.com/zackw/rust-url-repair"
+readme      = "README.md"
+keywords    = ["parser", "url"]
+categories  = ["encoding", "web-programming"]
 
 [dependencies]
 url   = "^1.7.0"

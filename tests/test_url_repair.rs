@@ -6,7 +6,7 @@
 // sort by all the inputs that repair to the same value.)  Blank lines
 // and lines beginning with # are ignored.
 // #commented-out test cases are not yet implemented.
-const SUCCESSFUL_CASES: &'static str = r#"
+const SUCCESSFUL_CASES: &str = r#"
 # Equivalent forms of the scheme and hostname.
 http://example.com/            http://example.com/
 http://example.com/            HTTP://EXAMPLE.COM/
@@ -135,7 +135,7 @@ http://example.com/#a\b=c           http://example.com/#a\b=c
 // Same as above, but these are expected to parse unsuccessfully.
 // The left-hand side is the expected Debug serialization of the
 // url::ParseError that is returned.
-const UNSUCCESSFUL_CASES: &'static str = r#"
+const UNSUCCESSFUL_CASES: &str = r#"
 # IPv4 address literals
 # individual components must be in the range 0..255
 InvalidIpv4Address    http://256.1.1.1/
@@ -185,7 +185,7 @@ test_suite! {
 
     fn parse_test_list (s: &str) -> impl Iterator<Item=(&str, &str)> {
         s.lines().filter_map(|line| {
-            if line.is_empty() || line.starts_with("#") {
+            if line.is_empty() || line.starts_with('#') {
                 None
             } else {
                 let mut fields = line.split_whitespace();
@@ -209,8 +209,7 @@ test_suite! {
 
         match repair_url(input) {
             Ok(url)  => assert_eq!(url.as_str(), parsed),
-            Err(err) => assert!(false, "{}: unsuccessful repair: {}",
-                                input, err)
+            Err(err) => panic!("{}: unsuccessful repair: {}", input, err)
         }
     }
 
@@ -226,9 +225,8 @@ test_suite! {
 
         match repair_url(input) {
             Err(err) => assert_eq!(format!("{:?}", err), xerr),
-            Ok(url)  => assert!(false,
-                                "{}: should not parse (got {}, expected {})",
-                                input, url, xerr)
+            Ok(url)  => panic!("{}: should not parse (got {}, expected {})",
+                               input, url, xerr)
         }
     }
 }
